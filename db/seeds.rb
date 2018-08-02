@@ -7,25 +7,16 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 User.create([{username: 'Vasya'}, {username: 'Alex'}, {username: 'Frank'}]) 
 
-category = Category.create!(title: 'Programming')
-test = Test.create(title:'Ruby', level: 1, category_id: category.id)
-question = Question.create(body: 'about Ruby,correct A', test_id: test.id)
-Answer.create([{body: 'A. correct for Ruby question', correct: true, question_id: question.id},
-              {body: 'B. incorrect for Ruby question', question_id:question.id}])
+def make_category(seed_category)
+    category = Category.create(title: seed_category[:title])
+    seed_category[:test].each do |test|
+      test = Test.create(title: test[0], level: test[1], category_id: category.id)
+      question = Question.create(body: "Question about #{test.title}", test_id: test.id)
+      Answer.create(body: "Correct answer about #{test.title}", correct: true, question_id: question.id)
+      Answer.create(body: "Incorrect answer about #{test.title}", question_id: question.id)
+    end
+  end
 
-test = Test.create(title:'Python', level: 2, category_id: category.id)
-question = Question.create(body: 'about Python,correct A', test_id: test.id)
-Answer.create([{body: 'A. correct for Python question', correct: true, question_id: question.id},
-              {body: 'B. incorrect for Python question', question_id:question.id}])
-
-category = Category.create!(title: 'Math')
-test = Test.create(title:'Geometry', level: 2, category_id: category.id)
-question = Question.create(body: 'about Geometry,correct A', test_id: test.id)
-Answer.create([{body: 'A. correct for Geometry question', correct: true, question_id: question.id},
-              {body: 'B. incorrect for Geometry question', question_id:question.id}])
-
-category = Category.create!(title: 'Space')
-test = Test.create(title:'Moon', category_id: category.id)
-question = Question.create(body: 'about Moon,correct A', test_id: test.id)
-Answer.create([{body: 'A. correct for Moon question', correct: true, question_id: question.id},
-              {body: 'B. incorrect for Moon question', question_id:question.id}])
+make_category({title: 'Programming', test: [['Ruby', 2], ['Python', 1], ['c', 2]]})
+make_category({title: 'Math', test: [['Geometry', 1], ['Trigonometry', 2]]})
+make_category({title: 'Space', test: [['Moon', 0], ['Sun', 1], ['Venus', 1]]})
