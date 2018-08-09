@@ -5,15 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.create([{username: 'Vasya'}, {username: 'Alex'}, {username: 'Frank'}]) 
+User.create!([{username: 'Vasya'}, {username: 'Alex'}, {username: 'Frank'}]) 
 
 def make_category(seed_category)
-  category = Category.create(title: seed_category[:title])
-  seed_category[:test].each do |test|
-    test = Test.create(title: test[0], level: test[1], category_id: category.id)
-    question = Question.create(body: "Question about #{test.title}", test_id: test.id)
-    Answer.create(body: "Correct answer about #{test.title}", correct: true, question_id: question.id)
-    Answer.create(body: "Incorrect answer about #{test.title}", question_id: question.id)
+  category = Category.create!(title: seed_category[:title])
+  seed_category[:test].each do |(title, level)|
+    test = Test.create!(title: title, level: level, category_id: category.id)
+    question = Question.create!(body: "Question about #{test.title}", test_id: test.id)
+    Answer.create!(body: "Correct answer about #{test.title}", correct: true, question_id: question.id)
+    Answer.create!(body: "Incorrect answer about #{test.title}", question_id: question.id)
   end
 end
 
