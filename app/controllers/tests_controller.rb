@@ -11,7 +11,13 @@ class TestsController < ApplicationController
   end
 
   def create
-    test = Test.create(params.require(:test).permit(:title,:level))
+    test = Test.create(test_params)
     render plain: test.inspect
+  end
+
+  private 
+
+  def test_params
+    params.require(:test).permit(:title,:level)
   end
 end

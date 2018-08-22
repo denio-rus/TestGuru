@@ -9,14 +9,13 @@ class QuestionsController < ApplicationController
 
   def show
     @question = @test.questions.find(params[:id])
-    render "show"
   end
 
   def new
   end
 
   def create
-    Question.create(body: params[:question][:body], test_id: params[:test_id])
+    @test.questions.create(question_params)
     render plain: "Question was created"
   end
 
@@ -33,5 +32,9 @@ class QuestionsController < ApplicationController
 
   def rescue_with_question_not_found
     render plain: "Question was not found"
+  end
+
+  def question_params
+    params.require(:question).permit(:body)
   end
 end
