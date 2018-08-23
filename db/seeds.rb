@@ -11,9 +11,11 @@ def make_category(seed_category)
   category = Category.create!(title: seed_category[:title])
   seed_category[:test].each do |(title, level)|
     test = Test.create!(title: title, level: level, category_id: category.id, user_id: 1)
-    question = Question.create!(body: "Question about #{test.title}", test_id: test.id)
-    Answer.create!(body: "Correct answer about #{test.title}", correct: true, question_id: question.id)
-    Answer.create!(body: "Incorrect answer about #{test.title}", question_id: question.id)
+    3.times do
+      question = Question.create!(body: "Question about #{test.title}", test_id: test.id)
+      Answer.create!(body: "Correct answer about #{test.title}", correct: true, question_id: question.id)
+      Answer.create!(body: "Incorrect answer about #{test.title}", question_id: question.id)
+    end
   end
 end
 
