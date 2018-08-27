@@ -1,10 +1,10 @@
 module ApplicationHelper
     
-  def show_year
-    Date.today.year 
+  def current_year
+    Date.current.year
   end
 
-  def github_url(project, repo)
-    link_to project, repo, target: '_blank'
+  def github_link(author, repo)
+    link_to author, "https://github.com/#{author}/#{repo}/", target: '_blank'
   end
 end

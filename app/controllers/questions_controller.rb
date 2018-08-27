@@ -1,14 +1,9 @@
 class QuestionsController < ApplicationController
-  before_action :test_find
+  before_action :test_question_find
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
 
-  def index
-    redirect_to test_path(@test)
-  end
-
   def show
-    @question = @test.questions.find(params[:id])
   end
 
   def new
@@ -16,39 +11,40 @@ class QuestionsController < ApplicationController
   end
 
   def edit
-    @question = @test.questions.find(params[:id])
   end
 
   def create
     @question = @test.questions.new(question_params)
     
     if @question.save
-      redirect_to test_question_path(@test, @question)
+      redirect_to @question
     else
-      render :edit
+      render :new
     end
   end
 
   def update 
-    question = @test.questions.find(params[:id])
-
-    if question.update(question_params)
-      redirect_to test_question_path(@test, question)
+    if @question.update(question_params)
+      redirect_to @question
     else
       render :edit
     end
   end
 
-
   def destroy
-    Question.find(params[:id]).destroy
-    redirect_to test_path(@test)
+    @question.destroy
+    redirect_to @test
   end
 
   private
-
-  def test_find
-    @test = Test.find(params[:test_id])
+  
+  def test_question_find
+    if params[:id] # если задан этот параметр, значит речь идет не о new, create
+      @question = Question.find(params[:id])
+      @test = @question.test
+    else 
+      @test = Test.find(params[:test_id])
+    end
   end
 
   def rescue_with_question_not_found
