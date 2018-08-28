@@ -1,5 +1,5 @@
-<h3> Test <%=@test.title %> </h3>
+<h3> Test <%=@question.test.title %> </h3>
 <h5> Question id <%= @question.id %></h5>
 <p> <%= @question.body %> </p>
 
-<%= link_to 'Back', test_path(@test) %>
+<%= link_to 'Back', test_path(@question.test) %>

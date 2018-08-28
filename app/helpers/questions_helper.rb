@@ -1,18 +1,18 @@
 module QuestionsHelper
 
-  def question_header(test, question)
+  def question_header(question)
     if question.persisted?
-      "Edit '#{test.title} test' Question"
+      "Edit '#{question.test.title} test' Question"
     else
-      "Create New '#{test.title} test' Question"
+      "Create New '#{question.test.title} test' Question"
     end
   end
 
-  def choose_model(test, question)
+  def choose_model(question)
     if question.persisted?
-      [question]
+      question
     else
-      [test, question]
+      [question.test, question]
     end
   end
 end
