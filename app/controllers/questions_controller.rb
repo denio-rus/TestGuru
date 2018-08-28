@@ -1,33 +1,50 @@
 class QuestionsController < ApplicationController
-  before_action :test_find
+  before_action :test_find, only:  %i[new create]
+  before_action :question_find, only: %i[edit update show destroy]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
 
-  def index
-    render partial: 'question', collection: @test.questions
-  end
-
   def show
-    @question = @test.questions.find(params[:id])
   end
 
   def new
+    @question = @test.questions.new
+  end
+
+  def edit
   end
 
   def create
-    @test.questions.create(question_params)
-    render plain: "Question was created"
+    @question = @test.questions.new(question_params)
+    
+    if @question.save
+      redirect_to @question
+    else
+      render :new
+    end
+  end
+
+  def update 
+    if @question.update(question_params)
+      redirect_to @question
+    else
+      render :edit
+    end
   end
 
   def destroy
-    Question.find(params[:id]).destroy
-    render html: '<h3>The question has been deleted.</h3>'.html_safe
+    @question.destroy
+    redirect_to test_path(@question.test)
   end
 
   private
-
+  
   def test_find
     @test = Test.find(params[:test_id])
+  end
+
+  def question_find
+    @question = Question.find(params[:id])
   end
 
   def rescue_with_question_not_found

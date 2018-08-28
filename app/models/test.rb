@@ -3,7 +3,7 @@ class Test < ApplicationRecord
   belongs_to :category
   has_many :tests_users
   has_many :users, through: :tests_users
-  has_many :questions
+  has_many :questions, dependent: :destroy
 
   validates :title, presence: true, uniqueness: { scope: :level, case_sensetive: false }
   validates :level, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
