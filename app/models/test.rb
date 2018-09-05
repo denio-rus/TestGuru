@@ -1,8 +1,8 @@
 class Test < ApplicationRecord
   belongs_to :author, class_name: 'User', foreign_key: 'user_id', inverse_of: :created_tests
   belongs_to :category
-  has_many :tests_users
-  has_many :users, through: :tests_users
+  has_many :test_passages
+  has_many :users, through: :test_passages
   has_many :questions, dependent: :destroy
 
   validates :title, presence: true, uniqueness: { scope: :level, case_sensetive: false }
