@@ -10,7 +10,7 @@ class TestPassage < ApplicationRecord
     if correct_answer?(answer_ids)
       self.correct_questions += 1
     end
-    @question_number += 1
+
     save!
   end
 
@@ -27,7 +27,7 @@ class TestPassage < ApplicationRecord
   end
 
   def running_number_of_question
-    @question_number
+    test.questions.where('id <= ?', current_question).count
   end
 
   private
