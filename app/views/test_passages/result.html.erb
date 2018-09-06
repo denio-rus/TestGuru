@@ -1,7 +1,7 @@
 <h1> The <%=@test_passage.test.title %> Test was Completed!</h1>
 
-<h3 style="color: <%= color_of_result_message %>">
-  The Test is <%= @test_passage.test_result %>. 
+<h3 style="color: <%= color_of_result_message(@test_passage) %>">
+  The Test is <%= test_result(@test_passage) %>. 
   You got <%= format("%3.f", @test_passage.percent_of_correct_answers) %>% of correct answers. 
 </h3>
   

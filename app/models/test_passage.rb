@@ -18,12 +18,8 @@ class TestPassage < ApplicationRecord
     correct_questions.to_f / test.questions.count * 100
   end
 
-  def test_result
-    if percent_of_correct_answers >= 85
-      'passed'
-    else 
-      'failed'
-    end
+  def success?
+    percent_of_correct_answers >= 85
   end
 
   def number_of_questions
@@ -37,11 +33,15 @@ class TestPassage < ApplicationRecord
   private
 
   def before_validation_set_next_question
+    self.current_question = next_question
+  end
+
+  def next_question 
     if current_question 
-      self.current_question = test.questions.order(:id).where('id > ?', current_question.id).first
+      test.questions.order(:id).where('id > ?', current_question.id).first
     else
-      self.current_question = test.questions.first if test.present?
-    end    
+      test.questions.first if test.present?
+    end
   end
 
   def correct_answer?(answer_ids)
