@@ -6,15 +6,10 @@ Rails.application.routes.draw do
     resources :questions, shallow: true, except: :index do
       resources :answers, shallow: true, except: :index 
     end
-
-    member do 
-      post :start
-    end
+    post :start, on: :member
   end
 
   resources :test_passages, only: %i[show update] do
-    member do
-      get :result
-    end
+    get :result, on: :member
   end
 end

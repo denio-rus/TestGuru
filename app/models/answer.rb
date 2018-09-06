@@ -7,8 +7,6 @@ class Answer < ApplicationRecord
   scope :correct, -> { where(correct: true) }
 
   def max_number_of_answers
-    if question.answers.count == 4
-      errors.add(:question_id, "Reached max number of answers for this question")
-    end
+    errors.add(:question_id, "Reached max number of answers for this question") if question.answers.count == 4
   end
 end
