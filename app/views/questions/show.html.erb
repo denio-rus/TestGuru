@@ -2,4 +2,12 @@
 <h5> Question id <%= @question.id %></h5>
 <p> <%= @question.body %> </p>
 
+<h3>Answers</h3>
+
+<%= link_to 'New Answer', new_question_answer_path(@question) %>
+
+<ol>
+  <%= render @question.answers %>
+</ol>
+
 <%= link_to 'Back', test_path(@question.test) %>
