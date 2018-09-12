@@ -10,10 +10,8 @@
   </head>
 
   <body>
-    <% if logged_in? %>
-      <p class="nav user">Welcome, <b><%= current_user.username %></b> Guru</p>
-    <% end %>
-
+    <%= render 'shared/nav' %>
+    <%= flash_message %>
     <%= yield %>
     <%= render 'shared/footer' %>
   </body>

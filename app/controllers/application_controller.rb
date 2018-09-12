@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
 
+  before_action :authenticate_user!, except: %i[current_user logged_in?]
+
   helper_method :current_user,
                 :logged_in?
 

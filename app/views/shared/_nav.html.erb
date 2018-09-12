@@ -1,0 +1,13 @@
+<h1 style="text-align: center"><%= link_to 'Test-Guru', root_path %></h1>
+
+<% if logged_in? %>
+  <p class="nav user">
+    Welcome, <b><%= current_user.username %></b> Guru<br>
+    <%= link_to 'log out', logout_path, method: :post %>
+  </p>
+<% else %>
+  <p class="nav user">
+    <%= link_to 'sign up', signup_path %>
+    <%= link_to 'login', login_path %>
+  </p>
+<% end %>
