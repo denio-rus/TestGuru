@@ -1,17 +1,15 @@
-class SessionsController < ApplicationController
+class SessionsController < AuthController
 
-  skip_before_action :authenticate_user!, only: %i[new create]
+  before_action :authenticate_user!, only: :destroy
 
-  def new
-    cookies[:start_page] = root_path
-  end
+  def new; end
 
   def create
     user = User.find_by(username: params[:username])
 
     if user&.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to cookies[:start_page]
+      redirect_to cookies[:start_page]? cookies[:start_page] : root_path
     else
       flash.now[:alert] = 'Are you a Guru? Verify your name and password, please!'
       render :new
@@ -19,7 +17,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    reset_session
-    redirect_to login_path, alert: 'You have successfully logged out.'
+    session.delete(:user_id)
+    @current_user = nil
+    redirect_to login_path, notice: 'You have successfully logged out.'
   end
 end

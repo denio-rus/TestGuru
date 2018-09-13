@@ -8,7 +8,7 @@ module ApplicationHelper
     link_to author, "https://github.com/#{author}/#{repo}/", target: '_blank'
   end
 
-  def flash_message
-    content_tag :p, flash[:alert], class: 'flash alert' if flash[:alert]
+  def flash_message(key)
+    content_tag :p, flash[key.to_sym], class: "flash #{key}" if key.present?
   end     
 end

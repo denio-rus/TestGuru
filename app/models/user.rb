@@ -1,5 +1,3 @@
-require 'digest/sha1'
-
 class User < ApplicationRecord
  
   has_many :test_passages

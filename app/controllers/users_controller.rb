@@ -1,6 +1,4 @@
-class UsersController < ApplicationController
-
-  skip_before_action :authenticate_user!
+class UsersController < AuthController
 
   def new
     @user = User.new
