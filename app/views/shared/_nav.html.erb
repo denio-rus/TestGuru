@@ -2,7 +2,7 @@
 
 <% if logged_in? %>
   <p class="nav user">
-    Welcome, <b><%= current_user.username %></b> Guru<br>
+    Welcome, <b><%= current_user.email %></b> Guru<br>
     <%= link_to 'log out', logout_path, method: :post %>
   </p>
 <% else %>
