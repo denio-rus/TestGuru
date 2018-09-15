@@ -1,5 +1,4 @@
 class SessionsController < AuthController
-
   before_action :authenticate_user!, only: :destroy
 
   def new; end
@@ -18,7 +17,6 @@ class SessionsController < AuthController
 
   def destroy
     session.delete(:user_id)
-    @current_user = nil
     redirect_to login_path, notice: 'You have successfully logged out.'
   end
 end

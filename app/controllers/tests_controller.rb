@@ -1,5 +1,4 @@
 class TestsController < AuthController
-  before_action :authenticate_user!
   before_action :find_test, only: %i[show edit update destroy start]
   
   def index
