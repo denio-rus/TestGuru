@@ -5,7 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.create!([{username: 'Vasya'}, {username: 'Alex'}, {username: 'Frank'}]) 
+users = [{email: 'Vasya@kremlin.ru', password: 'xxx'}, {email: 'Alex@mail.ru', password: 'aaa'}, {email: 'Frank@gmail.com', password: '111'}]
+users.each do |user|
+  account = User.new(email: user[:email])
+  account.password = user[:password]
+  account.password_digest
+  account.save!
+end
 
 def make_category(seed_category)
   category = Category.create!(title: seed_category[:title])
