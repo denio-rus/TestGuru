@@ -11,7 +11,7 @@
 
   <body>
     <%= render 'shared/nav' %>
-    <%= flash_message(flash.keys.first) %>
+    <%= render 'shared/flash' %>
     <%= yield %>
     <%= render 'shared/footer' %>
   </body>

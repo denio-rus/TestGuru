@@ -1,0 +1,13 @@
+<h3> Test <%=@question.test.title %> </h3>
+<h5> Question id <%= @question.id %></h5>
+<p> <%= @question.body %> </p>
+
+<h3>Answers</h3>
+
+<%= link_to 'New Answer', new_admin_question_answer_path(@question) %>
+
+<ol>
+  <%= render @question.answers %>
+</ol>
+
+<%= link_to 'Back', admin_test_path(@question.test) %>

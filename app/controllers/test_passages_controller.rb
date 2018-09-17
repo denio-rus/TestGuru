@@ -1,7 +1,10 @@
-class TestPassagesController < AuthController
+class TestPassagesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_test_passage, only: %i[show update result]
 
-  def show; end
+  def show
+    render plain: 'There are no questions in this test yet' unless @test_passage.current_question
+  end
 
   def result; end
 
@@ -9,6 +12,7 @@ class TestPassagesController < AuthController
     @test_passage.accept!(params[:answer_ids])
 
     if @test_passage.completed?
+      TestsMailer.completed_test(@test_passage).deliver_now
       redirect_to result_test_passage_path(@test_passage)
     else
       render :show
