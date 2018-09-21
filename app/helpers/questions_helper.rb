@@ -7,12 +7,4 @@ module QuestionsHelper
       "Create New '#{question.test.title} test' Question"
     end
   end
-
-  def choose_model(question)
-    if question.persisted?
-      question
-    else
-      [question.test, question]
-    end
-  end
 end

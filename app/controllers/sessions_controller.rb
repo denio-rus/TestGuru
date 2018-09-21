@@ -1,22 +1,7 @@
-class SessionsController < AuthController
-  before_action :authenticate_user!, only: :destroy
-
-  def new; end
-
+class SessionsController < Devise::SessionsController
   def create
-    user = User.find_by(email: params[:email])
-
-    if user&.authenticate(params[:password])
-      session[:user_id] = user.id
-      redirect_to cookies[:start_page]? cookies[:start_page] : root_path
-    else
-      flash.now[:alert] = 'Are you a Guru? Verify your name and password, please!'
-      render :new
+    super do |current_user|
+      flash.notice = "Привет, #{current_user.first_name}"
     end
-  end
-
-  def destroy
-    session.delete(:user_id)
-    redirect_to login_path, notice: 'You have successfully logged out.'
   end
 end
