@@ -38,18 +38,35 @@ en:
   link_delete: "Delete"
   sure?: "Are you sure?"
 
-  test_table:
+  tests_table:
     title: "Title"
     level: "Level"
     number_of_questions: "Number of questions"
     actions: "Actions"
+    button_start: "Start"
+  
+  nav_bar:
+    admin_header: "Test-Guru. Admin panel."
+    user_header: "Test-Guru"
+    greetings_html: "Welcome, <b class='nav-admin user-email'>%{email}</b> Guru!"
+    login: "Log in"
+    logout: "Log out"
+    sign_up: "Sign up"
 
   tests:
     index:
       header: "Tricky Tests"
+
   test_passages:
+    passed: "passed"
+    failed: "failed"
     show:
       header: "Passing the '%{title} Test'"
+      question_number: "Question %{number} in %{total}."
+      button_next: "Next"
+    result:
+      header: "The %{title} Test was Completed!"
+      result_message: "The Test is %{result}. You got %{percent}% of correct answers." 
      
   admin:
     tests:
@@ -82,5 +99,4 @@ en:
         level: "Level"
         category_id: "Category"
       question:
-        body: "Question:"
-
+        body: "Вопрос:"

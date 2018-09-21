@@ -10,14 +10,30 @@ ru:
       level: "Уровень"
       number_of_questions: "Количество вопросов"
       actions: "Действия"
+      button_start: "Старт"
+      
+  nav_bar:
+    admin_header: "Test-Guru. Панель Администратора."
+    user_header: "Test-Guru"
+    greetings_html: "Приветствуем, <b class='nav-admin user-email'>%{email}</b> Guru!"
+    login: "войти"
+    logout: "выйти"
+    sign_up: "Регистрация"
 
   tests:
     index:
       header: "Доступные тесты"
 
   test_passages:
+    passed: "пройден"
+    failed: "провален"
     show:
       header: "Прохождение теста '%{title}'"
+      question_number: "Вопрос %{number} из %{total}."
+      button_next: "Дальше"
+    result:
+      header: "Тест \"%{title}\" завершён!"
+      result_message: "Тест %{result}. Ваш результат: %{percent}% правильных ответов." 
 
   admin:
     tests:
@@ -38,8 +54,6 @@ ru:
         actions: "Действия:"
         new_question: "Создать новый вопрос"
         edit_test: "Редактировать тест"
-        
-    questions:
 
   helpers:
     submit:
