@@ -1,4 +1,4 @@
-<h1>Passing the <%= @test_passage.test.title %> Test</h1>
+<h1><%= t('.header', title: @test_passage.test.title) %></h1>
 
 
   <p>Question <%= @test_passage.number_of_current_question %> in <%= @test_passage.number_of_questions %></p>

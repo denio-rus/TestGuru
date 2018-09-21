@@ -30,4 +30,57 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  link_back: :"Back"
   hello: "Hello world"
+  link_back: "Back"
+  link_show: "Show"
+  link_edit: "Edit"
+  link_delete: "Delete"
+  sure?: "Are you sure?"
+
+  test_table:
+    title: "Title"
+    level: "Level"
+    number_of_questions: "Number of questions"
+    actions: "Actions"
+
+  tests:
+    index:
+      header: "Tricky Tests"
+  test_passages:
+    show:
+      header: "Passing the '%{title} Test'"
+     
+  admin:
+    tests:
+      create:
+        success: 'Test was successfully created.'
+      index:
+        header: "Tricky Tests"
+        link_new_test: "New test"
+      new:
+        header: "Create New Test"
+      edit:
+        header: "Edit the Test: '%{title}'."
+      show:
+        title_html: "<strong>Title:</strong>"
+        level_html: "<strong>Level:</strong>"
+        question: "Question:"
+        actions: "Actions:"
+        link_back: "Back"
+        new_question: "Add new question"
+        edit_test: "Edit test"
+
+  helpers:
+    submit:
+      test:
+        create: "Create Test"
+        update: "Update Test"
+    label:
+      test:
+        title: "Title"
+        level: "Level"
+        category_id: "Category"
+      question:
+        body: "Question:"
+
