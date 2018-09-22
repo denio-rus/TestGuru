@@ -30,4 +30,73 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  link_back: :"Back"
   hello: "Hello world"
+  link_back: "Back"
+  link_show: "Show"
+  link_edit: "Edit"
+  link_delete: "Delete"
+  sure?: "Are you sure?"
+
+  tests_table:
+    title: "Title"
+    level: "Level"
+    number_of_questions: "Number of questions"
+    actions: "Actions"
+    button_start: "Start"
+  
+  nav_bar:
+    admin_header: "Test-Guru. Admin panel."
+    user_header: "Test-Guru"
+    greetings_html: "Welcome, <b class='nav-admin user-email'>%{email}</b> Guru!"
+    login: "Log in"
+    logout: "Log out"
+    sign_up: "Sign up"
+
+  tests:
+    index:
+      header: "Tricky Tests"
+
+  test_passages:
+    passed: "passed"
+    failed: "failed"
+    show:
+      header: "Passing the '%{title} Test'"
+      question_number: "Question %{number} in %{total}."
+      button_next: "Next"
+    result:
+      header: "The %{title} Test was Completed!"
+      result_message: "The Test is %{result}. You got %{percent}% of correct answers." 
+     
+  admin:
+    tests:
+      create:
+        success: 'Test was successfully created.'
+      index:
+        header: "Tricky Tests"
+        link_new_test: "New test"
+      new:
+        header: "Create New Test"
+      edit:
+        header: "Edit the Test: '%{title}'."
+      show:
+        title_html: "<strong>Title:</strong>"
+        level_html: "<strong>Level:</strong>"
+        question: "Question:"
+        actions: "Actions:"
+        link_back: "Back"
+        new_question: "Add new question"
+        edit_test: "Edit test"
+
+  helpers:
+    submit:
+      test:
+        create: "Create Test"
+        update: "Update Test"
+    label:
+      test:
+        title: "Title"
+        level: "Level"
+        category_id: "Category"
+      question:
+        body: "Вопрос:"

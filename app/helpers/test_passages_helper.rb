@@ -9,9 +9,9 @@ module TestPassagesHelper
 
   def test_result(test_passage)
     if test_passage.success?
-      'passed'
+      t('test_passages.passed')
     else
-      'failed'
+      t('test_passages.failed')
     end
   end
 end

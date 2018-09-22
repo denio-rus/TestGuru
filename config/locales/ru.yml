@@ -1,0 +1,74 @@
+ru:
+  link_back: "Назад"
+  link_show: "Показать"
+  link_edit: "Редактировать"
+  link_delete: "Удалить"
+  sure?: "Вы уверены?"
+
+  tests_table:
+      title: "Название"
+      level: "Уровень"
+      number_of_questions: "Количество вопросов"
+      actions: "Действия"
+      button_start: "Старт"
+      
+  nav_bar:
+    admin_header: "Test-Guru. Панель Администратора."
+    user_header: "Test-Guru"
+    greetings_html: "Приветствуем, <b class='nav-admin user-email'>%{email}</b> Guru!"
+    login: "войти"
+    logout: "выйти"
+    sign_up: "Регистрация"
+
+  tests:
+    index:
+      header: "Доступные тесты"
+
+  test_passages:
+    passed: "пройден"
+    failed: "провален"
+    show:
+      header: "Прохождение теста '%{title}'"
+      question_number: "Вопрос %{number} из %{total}."
+      button_next: "Дальше"
+    result:
+      header: "Тест \"%{title}\" завершён!"
+      result_message: "Тест %{result}. Ваш результат: %{percent}% правильных ответов." 
+
+  admin:
+    tests:
+      create:
+        success: "Тест успешно создан."
+      index:
+        header: "Доступные тесты"
+        link_new_test: "Создать новый тест"
+      new:
+        header: "Создание нового теста"
+      edit:
+        header: "Изменение теста '%{title}'"
+        link_back: "Назад" 
+      show:
+        title_html: "<strong>Название:</strong>"
+        level_html: "<strong>Уровень:</strong>"
+        question: "Вопрос:"
+        actions: "Действия:"
+        new_question: "Создать новый вопрос"
+        edit_test: "Редактировать тест"
+
+  helpers:
+    submit:
+      test:
+        create: "Создать тест"
+        update: "Обновить тест"
+      question:
+        create: "Создать вопрос"
+        update: "Сохранить изменения"
+    label:
+      test:
+        title: "Название"
+        level: "Уровень"
+        category_id: "Категория"
+      question:
+        body: "Вопрос:"
+    select:
+      prompt: "Выберите вариант"

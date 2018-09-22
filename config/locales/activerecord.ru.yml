@@ -1,0 +1,24 @@
+ru:
+  activerecord: 
+    model:
+      test: "Тест"
+      question: "Вопрос"
+      answer: "Ответ"
+    attributes:
+      test:
+        title: "Название"
+        level: "Уровень"
+        category: "Категория"
+        author: "Автор"
+      user:
+        password: "Пароль"
+        password_confirmation: "Подтверждение пароля"
+      
+    errors:
+      messages:
+        blank: "не может быть пустым"
+        required: "- атрибут должен быть указан."
+        taken: "уже используется."
+        greater_than_or_equal_to: " не должен быть отрицательным"
+        confirmation: "не совпадает"
+        too_short: "слишком короткий(минимум 6 символов)"

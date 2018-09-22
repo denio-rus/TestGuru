@@ -1,0 +1,18 @@
+en:
+  activerecord: 
+    model:
+      test: "Test"
+      question: "Question"
+      answer: "Answer"
+    attributes:
+      test:
+        title: "Title"
+        level: "Level"
+        category: "Category"
+        author: "Autor"
+    errors:
+      messages:
+        blank: "can't be blank."
+        required: "must exist."
+        taken: "has already been taken."
+        greater_than_or_equal_to: "must be greater than or equal to 0."
