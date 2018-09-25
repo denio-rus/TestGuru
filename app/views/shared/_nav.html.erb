@@ -1,13 +1,23 @@
-<h1 style="text-align: center"><%= link_to t('nav_bar.user_header'), root_path %></h1>
+<nav class="navbar navbar-light bg-light">
+  <%= link_to t('nav_bar.user_header'), root_path, class: 'navbar-brand' %>
 
-<% if user_signed_in? %>
-  <p class="nav user">
-    <%= t('nav_bar.greetings_html', email: current_user.email) %> | 
-    <%= link_to t('nav_bar.logout'), destroy_user_session_path, method: :delete %>
-  </p>
-<% else %>
-  <p class="nav user">
-    <%= link_to t('nav_bar.sign_up'), new_user_registration_path %>
-    <%= link_to t('nav_bar.login'), new_user_session_path %>
-  </p>
-<% end %>
+  <% if user_signed_in? %>
+    <%= link_to_admin_panel %>
+  <% end %>
+
+  <span class="navbar-text">
+    <% if user_signed_in? %>
+      <p class="nav user">
+        <%= t('nav_bar.greetings_html', email: current_user.email) %> | 
+        <%= link_to t('nav_bar.logout'), destroy_user_session_path, method: :delete %>
+      </p>
+    <% else %>
+      <p class="nav user">
+        <%= link_to t('nav_bar.sign_up'), new_user_registration_path %> | 
+        <%= link_to t('nav_bar.login'), new_user_session_path %>
+      </p>
+    <% end %>
+  </span>
+</nav>
+
+

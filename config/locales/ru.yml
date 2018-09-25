@@ -16,9 +16,11 @@ ru:
     admin_header: "Test-Guru. Панель Администратора."
     user_header: "Test-Guru"
     greetings_html: "Приветствуем, <b class='nav-admin user-email'>%{email}</b> Guru!"
-    login: "войти"
-    logout: "выйти"
+    login: "Bойти"
+    logout: "Bыйти"
     sign_up: "Регистрация"
+    link_admin_panel: "Панель администратора"
+    link_user_mode: "Переключить в режим пользователя"
 
   tests:
     index:
