@@ -36,6 +36,12 @@ ru:
     result:
       header: "Тест \"%{title}\" завершён!"
       result_message: "Тест %{result}. Ваш результат: %{percent}% правильных ответов." 
+    gist: 
+      success_html: "<a href='%{url}'>Gist успешно сохранен</a>"
+      failure: "Во время сохранения gist произошла ошибка!"
+  
+  gist_params:
+    description: "Вопрос о %{test_title} с TestGuru"
 
   admin:
     tests:
