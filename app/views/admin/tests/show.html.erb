@@ -1,20 +1,34 @@
-<p>
-  <%= t('.title_html') %>
-  <%= @test.title %>
-</p>
+<div class="row justify-content-center mt-3">
+  <div class="col col-md-8">
+    
+    <div class="card">
+      <div class="card-body">
+        <p>
+          <%= t('.title_html') %>
+          <%= @test.title %>
+        </p>
 
-<p>
-  <%= t('.level_html') %>
-  <%= @test.level %>
-</p>
-<%= link_to t('.edit_test'), edit_admin_test_path(@test) %><br>
-<%= link_to t('.new_question'), new_admin_test_question_path(@test) %>
-<table>
-    <tr> 
-      <th><%= t('.question') %></th>
-      <th colspan="3"><%= t('.actions') %></th>
-    </tr>
- 
-    <%= render @test.questions %>
-</table>
-<%= link_to t('link_back'), admin_tests_path %>
+        <p>
+          <%= t('.level_html') %>
+          <%= @test.level %>
+        </p>
+        <%= link_to t('.edit_test'), edit_admin_test_path(@test), class: 'btn btn-outline-secondary' %>
+        <%= link_to t('.new_question'), new_admin_test_question_path(@test), class: 'btn btn-outline-success' %>
+        <table class="table">
+          <thead class="thead-light">
+            <tr class="thead-light"> 
+              <th><%= t('.question') %></th>
+              <th><%= t('.actions') %></th>
+            </tr>
+          </thead>
+          
+          <tbody class="tbody">
+            <%= render @test.questions %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <%= link_to t('link_back'), admin_tests_path %>
+  </div>
+</div>

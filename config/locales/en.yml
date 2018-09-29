@@ -52,6 +52,8 @@ en:
     login: "Log in"
     logout: "Log out"
     sign_up: "Sign up"
+    link_admin_panel: "Admin Panel"
+    link_user_mode: "Switch to User mode"
 
   tests:
     index:

@@ -1,6 +1,6 @@
 <tr> 
-  <td><%= test.title %></td>
-  <td><%= test_level(test) %></td>
-  <td style="text-align:center"><%= test.questions.count %></td>
-  <td><%= button_to t('tests_table.button_start'), start_test_path(test) %></td>
+  <td data-toggle='tooltip' data-placement='rigth' title="Category of the test is <%= test.category.title %>"><%= test.title %></td>
+  <td data-toggle='tooltip' data-placement='rigth' title='Level - <%= test.level%>'><%= test_level(test) %></td>
+  <td><%= test.questions.count %></td>
+  <td><%= button_to t('tests_table.button_start'), start_test_path(test), class: 'btn btn-primary' %></td>
 </tr>
