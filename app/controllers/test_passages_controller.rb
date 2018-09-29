@@ -10,7 +10,7 @@ class TestPassagesController < ApplicationController
 
   def update
     @test_passage.accept!(params[:answer_ids])
-
+    
     if @test_passage.completed?
       TestsMailer.completed_test(@test_passage).deliver_now
       redirect_to result_test_passage_path(@test_passage)
@@ -20,12 +20,13 @@ class TestPassagesController < ApplicationController
   end
 
   def gist
-    result = GistQuestionService.new(@test_passage.current_question).call
-    byebug
-    flash_options = if result.status == 201 
-      { notice: t('.success_html', url: result.html_url) }
+    result = GitHubClientResponseAdapter.new(@test_passage.current_question)
+    
+    if result.success? 
+      Gist.create(user_id: @test_passage.user.id, question_id: @test_passage.current_question.id, url: result.gist_url, gist_hash: result.gist_hash)
+      flash_options = { notice: t('.success.html', url: result.gist_url) }
     else
-      { alert: t('.failure') }
+      flash_options = { alert: t('.failure') }
     end
 
     redirect_to @test_passage, flash_options

@@ -1,0 +1,21 @@
+<div class="card justify-content-center mt-3">
+  <div class="card-header text-center">
+    <h1><%= t('.header') %></h1>
+  </div>
+
+  <div class="card-body">
+    <table class="table text-center">
+      <thead class="thead-light">
+        <tr> 
+          <th><%= t('.question') %></th>
+          <th><%= t('.gist_url') %></th>
+          <th><%= t('.user') %></th>
+        </tr>
+      </thead>
+      </tbody class="tbody" >   
+        <%= render @gists %>
+      </tbody>
+    </table>
+    <%= link_to t('link_back'), admin_tests_path %>
+  </div>
+</div>

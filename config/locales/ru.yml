@@ -37,7 +37,8 @@ ru:
       header: "Тест \"%{title}\" завершён!"
       result_message: "Тест %{result}. Ваш результат: %{percent}% правильных ответов." 
     gist: 
-      success_html: "<a href='%{url}'>Gist успешно сохранен</a>"
+      success:
+        html: "<a href=\"%{url}\">Gist успешно сохранен</a>"
       failure: "Во время сохранения gist произошла ошибка!"
   
   gist_params:
@@ -50,6 +51,7 @@ ru:
       index:
         header: "Доступные тесты"
         link_new_test: "Создать новый тест"
+        link_gists_index: "Список Gists"
       new:
         header: "Создание нового теста"
       edit:
@@ -62,6 +64,12 @@ ru:
         actions: "Действия:"
         new_question: "Создать новый вопрос"
         edit_test: "Редактировать тест"
+    gists:
+      index:
+        header: "Список созданных Gist"
+        question: "Вопрос"
+        gist_url: "Ссылка на Gist"
+        user: "Пользователь"
 
   helpers:
     submit:

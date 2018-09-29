@@ -2,7 +2,7 @@
   <%= link_to t('nav_bar.user_header'), root_path, class: 'navbar-brand' %>
 
   <% if user_signed_in? %>
-    <%= link_to_admin_panel %>
+    <%= link_to t('nav_bar.link_admin_panel'), admin_tests_path, class: "nav-link active" if current_user.admin? %>
   <% end %>
 
   <span class="navbar-text">
