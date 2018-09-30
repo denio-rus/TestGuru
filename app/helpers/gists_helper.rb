@@ -1,5 +1,9 @@
 module GistsHelper
   def short_question_body(question)
-    question.body[0,25]
+    truncate(question.body, length: 25)
+  end
+
+  def gist_hash(gist)
+    gist.url.split('/').last
   end
 end

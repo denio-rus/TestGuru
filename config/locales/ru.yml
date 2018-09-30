@@ -37,8 +37,7 @@ ru:
       header: "Тест \"%{title}\" завершён!"
       result_message: "Тест %{result}. Ваш результат: %{percent}% правильных ответов." 
     gist: 
-      success:
-        html: "<a href=\"%{url}\">Gist успешно сохранен</a>"
+      success_html: "<a href=\"%{url}\">Gist успешно сохранен</a>"
       failure: "Во время сохранения gist произошла ошибка!"
   
   gist_params:

@@ -34,7 +34,6 @@ ActiveRecord::Schema.define(version: 2018_09_29_181353) do
     t.bigint "user_id"
     t.bigint "question_id"
     t.string "url"
-    t.string "gist_hash"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["question_id"], name: "index_gists_on_question_id"

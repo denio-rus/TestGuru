@@ -1,27 +1,44 @@
 class GistQuestionService
 
-  def initialize(question, client: nil)
+  def initialize(question, client: default_client)
     @question = question
     @test = @question.test
-    @client = client || Octokit::Client.new(access_token: ENV['GIST_TOKEN'], api_endpoint: 'https://api.github.com')
+    @client = client 
   end
 
   def call
-    @client.create_gist(options = gist_params)
+    GitHubResponse.new(@client.create_gist(gist_params))
   end
 
   private
 
   def gist_params
     { description: I18n.t('gist_params.description', test_title: @test.title),
-      public: true,
-      files: {'test-guru-question.txt' => { content: gist_content } }
-    }
+    public: true,
+    files: {'test-guru-question.txt' => { content: gist_content } } }
   end
 
   def gist_content
-    content = [@question.body]
-    content += @question.answers.pluck(:body)
-    content.join("\n")
+    [@question.body, *@question.answers.pluck(:body)].join("\n")
+  end
+
+  def default_client
+    Octokit::Client.new(access_token: ENV['GIST_TOKEN'])
+  end
+
+  class GitHubResponse 
+    attr_reader :response
+  
+    def initialize(response)
+      @response = response   
+    end
+  
+    def success? 
+      @response.html_url.present?
+    end
+  
+    def gist_url
+      @response.html_url
+    end
   end
 end

@@ -70,8 +70,7 @@ en:
       header: "The %{title} Test was Completed!"
       result_message: "The Test is %{result}. You got %{percent}% of correct answers." 
     gist:
-      success:
-        html: "<a href=\"%{url}\">Gist was created successfully!</a>"
+      success_html: "<a href=\"%{url}\">Gist was created successfully!</a>"
       failure: "An error occured while saving gist!"
 
 

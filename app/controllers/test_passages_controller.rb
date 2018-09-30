@@ -20,16 +20,16 @@ class TestPassagesController < ApplicationController
   end
 
   def gist
-    result = GitHubClientResponseAdapter.new(@test_passage.current_question)
+    result = GistQuestionService.new(@test_passage.current_question).call
     
     if result.success? 
-      Gist.create(user_id: @test_passage.user.id, question_id: @test_passage.current_question.id, url: result.gist_url, gist_hash: result.gist_hash)
-      flash_options = { notice: t('.success.html', url: result.gist_url) }
+      current_user.gists.create(question: @test_passage.current_question, url: result.gist_url)
+      flash[:notice] = t('.success_html', url: result.gist_url).html_safe
     else
-      flash_options = { alert: t('.failure') }
+      flash[:alert] = t('.failure') 
     end
 
-    redirect_to @test_passage, flash_options
+    redirect_to @test_passage
   end
 
   private
