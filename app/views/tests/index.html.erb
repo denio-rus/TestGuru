@@ -4,9 +4,13 @@
   </div>
 
   <table class='table text-center'>
-      <thead class='thead-dark'>
+      <thead>
         <tr> 
-          <th><%= t('tests_table.title') %></th>
+          <th class="sort-by-title pointer">
+            <%= t('tests_table.title') %>
+            <%= octicon 'arrow-up', class: 'text-success hide' %>
+            <%= octicon 'arrow-down', class: 'text-success hide' %>
+          </th>
           <th><%= t('tests_table.level') %></th>
           <th><%= t('tests_table.number_of_questions') %></th>
           <th><%= t('tests_table.actions') %></th>
