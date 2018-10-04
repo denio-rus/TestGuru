@@ -5,7 +5,7 @@ document.addEventListener('turbolinks:load', function() {
   var passwordControl = document.querySelector('#user_password')
 
   if (confirmationControl) { confirmationControl.addEventListener('input', checkConfirmation) }
-  if (passwordControl) {passwordControl.addEventListener('input', checkConfirmation) }
+  if (passwordControl) { passwordControl.addEventListener('input', checkConfirmation) }
 })
 
 function checkConfirmation() {
