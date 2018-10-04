@@ -24,7 +24,7 @@ class TestPassagesController < ApplicationController
     
     if result.success? 
       current_user.gists.create(question: @test_passage.current_question, url: result.gist_url)
-      flash[:notice] = t('.success_html', url: result.gist_url).html_safe
+      flash[:notice] = t('.success', url: result.gist_url)
     else
       flash[:alert] = t('.failure') 
     end
