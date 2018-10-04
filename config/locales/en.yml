@@ -69,6 +69,13 @@ en:
     result:
       header: "The %{title} Test was Completed!"
       result_message: "The Test is %{result}. You got %{percent}% of correct answers." 
+    gist:
+      success_html: "<a href=\"%{url}\">Gist was created successfully!</a>"
+      failure: "An error occured while saving gist!"
+
+
+  gist_params:
+    description: "A question about %{test_title} from TestGuru"
      
   admin:
     tests:
@@ -77,6 +84,7 @@ en:
       index:
         header: "Tricky Tests"
         link_new_test: "New test"
+        link_gists_index: "Gists Index"
       new:
         header: "Create New Test"
       edit:
@@ -89,6 +97,12 @@ en:
         link_back: "Back"
         new_question: "Add new question"
         edit_test: "Edit test"
+    gists:
+      index:
+        header: "Gists list"
+        question: "Question"
+        gist_url: "Link to Gist"
+        user: "User"
 
   helpers:
     submit:
