@@ -2,6 +2,11 @@
 
 <p><%= t('.question_number', number: @test_passage.number_of_current_question, total: @test_passage.number_of_questions) %> <p>
 
+<div class='progress-bar'>
+  <%= content_tag :div, '',class: 'progress', 
+                  data: { percent: (@test_passage.number_of_current_question / @test_passage.number_of_questions.to_f * 100).to_s + "%" } %>
+</div>
+
 <p>
   <b><%= @test_passage.current_question.body %></b>
 </p>
