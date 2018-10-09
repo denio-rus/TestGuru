@@ -5,11 +5,20 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-users = [{email: 'Vasya@kremlin.ru', password: 'xxx'}, {email: 'Alex@mail.ru', password: 'aaa'}, {email: 'Frank@gmail.com', password: '111'}]
+admin = [{ email: 'admin@admin.com', password: 'dddddd', first_name: 'Ben', last_name: 'Smith' }, 
+        {email: 'den@gmail.com', password: 'eeeeee', first_name: 'Fred', last_name: 'Hummer'}]
+admin.each do |admin|
+  account = Admin.new(email: admin[:email])
+  account.first_name = admin[:first_name]
+  account.last_name = admin[:last_name]
+  account.password = admin[:password]
+  account.save!
+end
+
+users = [ { email: 'Vasya@kremlin.ru', password: '111111'}, {email: 'Alex@mail.ru', password: '222222'}]
 users.each do |user|
   account = User.new(email: user[:email])
   account.password = user[:password]
-  account.password_digest
   account.save!
 end
 

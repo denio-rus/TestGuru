@@ -97,6 +97,8 @@ en:
         link_back: "Back"
         new_question: "Add new question"
         edit_test: "Edit test"
+      form_inline:
+        submit: "OK"
     gists:
       index:
         header: "Gists list"

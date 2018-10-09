@@ -12,6 +12,8 @@
       <%= link_to t('.link_gists_index'), admin_gists_path, class: "btn btn-outline-primary" %>
     </p>
 
+    <%= render 'shared/errors', resource: @test %>
+
     <table class="table text-center">
       <thead>
         <tr> 
