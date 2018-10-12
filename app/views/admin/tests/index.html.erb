@@ -1,4 +1,4 @@
-<div class="card justify-content-center mt-3">
+<div class="card justify-content-center mt-3 index-page">
   <div class="card-header text-center">
     <h1><%= t('.header') %></h1>
   </div>
@@ -11,6 +11,8 @@
     <p> 
       <%= link_to t('.link_gists_index'), admin_gists_path, class: "btn btn-outline-primary" %>
     </p>
+
+    <%= render 'shared/errors', resource: @test %>
 
     <table class="table text-center">
       <thead>

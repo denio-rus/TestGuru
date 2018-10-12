@@ -11,6 +11,8 @@ ru:
       number_of_questions: "Количество вопросов"
       actions: "Действия"
       button_start: "Старт"
+      cancel: "Отмена"
+      edit: "Редактирование"
       
   nav_bar:
     admin_header: "Test-Guru. Панель Администратора."
@@ -63,6 +65,8 @@ ru:
         actions: "Действия:"
         new_question: "Создать новый вопрос"
         edit_test: "Редактировать тест"
+      form_inline:
+        submit: "OK"
     gists:
       index:
         header: "Список созданных Gist"
