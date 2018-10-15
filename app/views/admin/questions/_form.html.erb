@@ -4,8 +4,10 @@
   <p>
     <%= form.label :body %><br>
     <%= form.text_field :body, id: :question_body %>
-  </p><br>
-  <%= form.submit %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
   <p>
     <%= link_to 'Back', admin_test_path(@question.test) %>
   </p>
