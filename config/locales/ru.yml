@@ -4,6 +4,7 @@ ru:
   link_edit: "Редактировать"
   link_delete: "Удалить"
   sure?: "Вы уверены?"
+  contact_us: "Напишите нам"
 
   tests_table:
       title: "Название"
@@ -23,7 +24,11 @@ ru:
     sign_up: "Регистрация"
     link_admin_panel: "Панель администратора"
     link_user_mode: "Переключить в режим пользователя"
-
+  
+  feedback:
+    new:
+      header: "Обратная связь"
+ 
   tests:
     index:
       header: "Доступные тесты"
@@ -82,6 +87,8 @@ ru:
       question:
         create: "Создать вопрос"
         update: "Сохранить изменения"
+      feedback:
+        new: "Отправить"
     label:
       test:
         title: "Название"
@@ -91,3 +98,5 @@ ru:
         body: "Вопрос:"
     select:
       prompt: "Выберите вариант"
+
+

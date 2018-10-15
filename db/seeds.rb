@@ -5,21 +5,17 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
 admin = [{ email: 'admin@admin.com', password: 'dddddd', first_name: 'Ben', last_name: 'Smith' }, 
         {email: 'den@gmail.com', password: 'eeeeee', first_name: 'Fred', last_name: 'Hummer'}]
+
 admin.each do |admin|
-  account = Admin.new(email: admin[:email])
-  account.first_name = admin[:first_name]
-  account.last_name = admin[:last_name]
-  account.password = admin[:password]
-  account.save!
+  account = Admin.create!(admin)
 end
 
 users = [ { email: 'Vasya@kremlin.ru', password: '111111'}, {email: 'Alex@mail.ru', password: '222222'}]
 users.each do |user|
-  account = User.new(email: user[:email])
-  account.password = user[:password]
-  account.save!
+  account = User.create!(user)
 end
 
 def make_category(seed_category)
