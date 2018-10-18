@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     post :gist, on: :member
   end
 
+  resource :feedback, controller: 'feedback', only: %i[new create]
+
   namespace :admin do 
     resources :gists, only: :index
     resources :tests do
