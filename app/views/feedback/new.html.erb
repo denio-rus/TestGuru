@@ -1,6 +1,7 @@
 <h1><%= t('.header') %></h1>
 
 <%= form_with url: feedback_path, local: true  do |form| %>
+  <%= render 'shared/errors', resource: @feedback %>
   <p>
     <%= form.label :message %><br>
     <%= form.text_field :message, id: :feedback_message, rows: 6, cols: 60 %>
