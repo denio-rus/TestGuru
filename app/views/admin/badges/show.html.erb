@@ -1,0 +1,30 @@
+<div class="row justify-content-center mt-3">
+  <div class="col col-md-8">
+    
+    <div class="card">
+      <div class="card-body">
+        <p>
+          <% if @badge.image %>
+            <%= image_tag @badge.image, alt: "Award" %>
+          <% end %>
+          <%= t('.title_html') %>
+          <%= @badge.title %>
+        </p>
+
+        <p>
+          <%= t('.description_html') %>
+          <%= @badge.description %>
+        </p>
+
+        <p>
+          <%= t('.condition_html') %>
+          <%= @badge.condition %>
+        </p>
+
+        <%= link_to t('.edit_badge'), edit_admin_badge_path(@badge), class: 'btn btn-outline-secondary' %>
+      </div>
+    </div>
+
+    <%= link_to t('link_back'), admin_badges_path %>
+  </div>
+</div>

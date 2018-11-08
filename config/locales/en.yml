@@ -97,6 +97,18 @@ en:
     description: "A question about %{test_title} from TestGuru"
      
   admin:
+    badges:
+      index:
+        link_new_badge: "Create New Badge"
+      show:
+        title_html: "<strong>Title:</strong>"
+        description_html: "<strong>Description:</strong>"
+        condition_html: "<strong>Condition:</strong>"
+        edit_badge: "Edit Badge"
+      edit:
+        header: "Edit Badge %{title}"
+      new:
+        header: "Create New Badge"
     tests:
       create:
         success: 'Test was successfully created.'
@@ -104,6 +116,7 @@ en:
         header: "Tricky Tests"
         link_new_test: "New test"
         link_gists_index: "Gists Index"
+        link_badges: "List Badges"
       new:
         header: "Create New Test"
       edit:
@@ -130,6 +143,9 @@ en:
       test:
         create: "Create Test"
         update: "Update Test"
+      badge:
+        create: "Create Badge"
+        update: "Update Badge"
       feedback:
         new: "Send"
     label:
@@ -139,4 +155,8 @@ en:
         category_id: "Category"
       question:
         body: "Вопрос:"
+      badge:
+        title: "Title"
+        description: "Description"
+        condition: "Condition"
 

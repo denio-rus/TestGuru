@@ -66,6 +66,18 @@ ru:
     description: "Вопрос о %{test_title} с TestGuru"
 
   admin:
+    badges:
+      index:
+        link_new_badge: "Создать новую награду"
+      show:
+        title_html: "<strong>Название:</strong>"
+        description_html: "<strong>Описание:</strong>"
+        condition_html: "<strong>Условие:</strong>"
+        edit_badge: "Редактировать награду"
+      edit:
+        header: "Изменение награды %{title}"
+      new:
+        header: "Создать награду"
     tests:
       create:
         success: "Тест успешно создан."
@@ -73,6 +85,7 @@ ru:
         header: "Доступные тесты"
         link_new_test: "Создать новый тест"
         link_gists_index: "Список Gists"
+        link_badges: "Список Наград"
       new:
         header: "Создание нового теста"
       edit:
@@ -99,6 +112,9 @@ ru:
       test:
         create: "Создать тест"
         update: "Обновить тест"
+      badge:
+        create: "Создать награду"
+        update: "Обновить награду"
       question:
         create: "Создать вопрос"
         update: "Сохранить изменения"
@@ -109,9 +125,12 @@ ru:
         title: "Название"
         level: "Уровень"
         category_id: "Категория"
+      badge:
+        title: "Название"
+        description: "Описание"
+        condition: "Условие"
       question:
         body: "Вопрос:"
     select:
       prompt: "Выберите вариант"
-
 
