@@ -24,6 +24,7 @@ ru:
     sign_up: "Регистрация"
     link_admin_panel: "Панель администратора"
     link_user_mode: "Переключить в режим пользователя"
+    link_achievements_html: "<a href='%{url}'>Ваши достижения</a>"
   
   feedback:
     new:
@@ -46,6 +47,20 @@ ru:
     gist: 
       success: "<a href=\"%{url}\" target='_blank'>Gist успешно сохранен</a>"
       failure: "Во время сохранения gist произошла ошибка!"
+
+  achievements:
+    index:
+      header: "Ваши достижения"
+      badge_title: "Название"
+      date: "Награда была получена"
+      link_badges: "Какие возможны достижения"
+
+  badges:
+    index:
+      header: "Все возможные награды"
+      badge_title: "Название"
+      badge_image: "Награда"
+      desription: "Описание"
   
   gist_params:
     description: "Вопрос о %{test_title} с TestGuru"

@@ -13,9 +13,11 @@ class User < ApplicationRecord
   has_many :created_tests, class_name: 'Test', inverse_of: :author, dependent: :nullify 
   has_many :tests, through: :test_passages
   has_many :gists
+  has_many :achievements, through: :test_passages
+  has_many :badges, through: :achievements
 
   def tests_by_level(level)
-    tests.where(level: level) 
+    tests.where(level: level)
   end
 
   def test_passage(test)

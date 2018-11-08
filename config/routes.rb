@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  
   root to: 'tests#index'
 
   devise_for :users, controllers: { sessions: 'sessions' }, path: :gurus, path_names: { sign_in: :login, sign_out: :logout }
@@ -7,6 +6,9 @@ Rails.application.routes.draw do
   resources :tests, only: :index do 
     post :start, on: :member
   end
+
+  resources :achievements, only: %i[index show create]
+  resources :badges, only: :index
 
   resources :test_passages, only: %i[show update] do
     get :result, on: :member
@@ -16,6 +18,7 @@ Rails.application.routes.draw do
   resource :feedback, controller: 'feedback', only: %i[new create]
 
   namespace :admin do 
+    resources :badges
     resources :gists, only: :index
     resources :tests do
       patch :update_inline, on: :member

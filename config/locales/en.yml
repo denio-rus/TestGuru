@@ -55,6 +55,7 @@ en:
     sign_up: "Sign up"
     link_admin_panel: "Admin Panel"
     link_user_mode: "Switch to User mode"
+    link_achievements_html: "<a href='%{url}'>Your Achievements</a>"
 
   feedback:
     new:
@@ -78,6 +79,19 @@ en:
       success: "<a href=\"%{url}\" target='_blank'>Gist was created successfully!</a>"
       failure: "An error occured while saving gist!"
 
+  achievements:
+    index:
+      header: "Your Achievements"
+      badge_title: "Title"
+      date: "Award was recieved at:"
+      link_badges: "All Posible Achievements"
+
+  badges:
+    index:
+      header: "All Awards"
+      badge_title: "Title"
+      badge_image: "Award"
+      desription: "Short Description"
 
   gist_params:
     description: "A question about %{test_title} from TestGuru"
