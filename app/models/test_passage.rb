@@ -3,6 +3,9 @@ class TestPassage < ApplicationRecord
   belongs_to :test
   belongs_to :current_question, class_name: 'Question', optional: true
   has_many :achievements
+  has_one :category, through: :test
+
+  scope :all_successful, -> { where(successful: true) }
   
   before_validation :before_validation_set_next_question
 

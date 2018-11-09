@@ -83,6 +83,7 @@ en:
     index:
       header: "Your Achievements"
       badge_title: "Title"
+      badge_image: "Award"
       date: "Award was recieved at:"
       link_badges: "All Posible Achievements"
 

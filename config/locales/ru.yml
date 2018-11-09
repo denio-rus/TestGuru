@@ -52,6 +52,7 @@ ru:
     index:
       header: "Ваши достижения"
       badge_title: "Название"
+      badge_image: "Награда"
       date: "Награда была получена"
       link_badges: "Какие возможны достижения"
 
