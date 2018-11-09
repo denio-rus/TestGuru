@@ -17,11 +17,26 @@
     </p><br>
 
     <p>
+      <strong>Укажите номер правила:</strong>
+      <ol>
+        <li>Успешно пройдены все тесты в категории</li>
+        <li>Успешно пройдены все тесты указанного уровня</li>
+        <li>Тест успешно пройден с первой попытки</li>
+        <li>Успешно пройдено N тестов</li>
+      </ol>
+      
       <%= form.label :choice %><br>
-      <%= form.text_field :choice, id: :badge_choice, placeholder: "Enter the number of Rule", class: "form-control" %>
+      <%= form.number_field :choice, id: :badge_choice, placeholder: "Enter the number of Rule", in: 1..4, class: "form-control" %>
     </p><br>
     
     <p>
+      <strong>Укажите уточнение для правила</strong>
+      <ol>
+        <li>Название категории</li>
+        <li>Значение уровня(цифра)</li>
+        <li>Название теста</li>
+        <li>Количество N</li>
+      </ol>
       <%= form.label :subject %><br>
       <%= form.text_field :subject, id: :badge_subject, placeholder: "Enter the subject", class: "form-control" %>
     </p><br>
