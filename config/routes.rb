@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     post :start, on: :member
   end
 
-  resources :achievements, only: %i[index show create]
+  resources :achievements, only: :index
   resources :badges, only: :index
 
   resources :test_passages, only: %i[show update] do
