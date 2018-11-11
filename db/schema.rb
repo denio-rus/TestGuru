@@ -17,11 +17,11 @@ ActiveRecord::Schema.define(version: 2018_11_08_081217) do
 
   create_table "achievements", force: :cascade do |t|
     t.bigint "badge_id"
-    t.bigint "test_passage_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["badge_id"], name: "index_achievements_on_badge_id"
-    t.index ["test_passage_id"], name: "index_achievements_on_test_passage_id"
+    t.index ["user_id"], name: "index_achievements_on_user_id"
   end
 
   create_table "answers", force: :cascade do |t|
@@ -35,11 +35,13 @@ ActiveRecord::Schema.define(version: 2018_11_08_081217) do
 
   create_table "badges", force: :cascade do |t|
     t.string "title", null: false
+    t.string "award_type", null: false
     t.string "condition", null: false
     t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "description", default: "Short description", null: false
+    t.index ["title"], name: "index_badges_on_title", unique: true
   end
 
   create_table "categories", force: :cascade do |t|
@@ -118,7 +120,7 @@ ActiveRecord::Schema.define(version: 2018_11_08_081217) do
   end
 
   add_foreign_key "achievements", "badges"
-  add_foreign_key "achievements", "test_passages"
+  add_foreign_key "achievements", "users"
   add_foreign_key "answers", "questions"
   add_foreign_key "gists", "questions"
   add_foreign_key "gists", "users"

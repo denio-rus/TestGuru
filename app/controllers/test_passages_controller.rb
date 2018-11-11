@@ -12,16 +12,18 @@ class TestPassagesController < ApplicationController
     @test_passage.accept!(params[:answer_ids])
     
     if @test_passage.completed?
-      if @test_passage.success?
-        @test_passage.successful = true
-        @test_passage.save!
-        check_achievement(@test_passage)
-      end
+      check_award if @test_passage.success?
       TestsMailer.completed_test(@test_passage).deliver_now
       redirect_to result_test_passage_path(@test_passage)
     else
       render :show
     end
+  end
+  
+  def check_award
+    award = AchievementService.new(@test_passage, current_user)
+    award.check_all
+    flash.notice = 'You got a new badge!' if award.success?
   end
 
   def gist
@@ -41,11 +43,5 @@ class TestPassagesController < ApplicationController
 
   def set_test_passage
     @test_passage = TestPassage.find(params[:id])
-  end
-
-  def check_achievement(test_passage)
-    Badge.all.each do |badge|
-      test_passage.achievements.create(badge_id: badge.id) if instance_eval(badge.condition)
-    end
   end
 end
