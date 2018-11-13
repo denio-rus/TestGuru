@@ -1,5 +1,6 @@
 class Badge < ApplicationRecord
-  enum award_type: %i[all_in_category all_in_level first_attempt successful_tests]
+  enum award_type: { all_in_category: 'all_in_category', all_in_level: 'all_in_level', 
+                     first_attempt: 'first_attempt', successful_tests: 'successful_tests' }
 
   has_many :achievements, dependent: :destroy
   has_many :users, through: :achievements
@@ -11,6 +12,6 @@ class Badge < ApplicationRecord
   private
 
   def need_condition?
-    award_type != :first_attempt
+    award_type != 'first_attempt'
   end
 end

@@ -18,7 +18,7 @@
 
     <p>
       <%= form.label :award_type %><br>
-      <%= form.collection_select :award_type, Badge.award_types.map { |k,v| [v,k] }, :first, :last , id: :badge_type, prompt: true %>
+      <%= form.collection_select :award_type, Badge.award_types.to_a, :first, :last , id: :badge_type, prompt: true %>
     </p><br>
     
     <p>

@@ -33,16 +33,8 @@ ActiveRecord::Schema.define(version: 2018_11_08_081217) do
     t.index ["question_id"], name: "index_answers_on_question_id"
   end
 
-  create_table "badges", force: :cascade do |t|
-    t.string "title", null: false
-    t.integer "award_type", null: false
-    t.string "condition", null: false
-    t.string "image"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.text "description", default: "Short description", null: false
-    t.index ["title"], name: "index_badges_on_title", unique: true
-  end
+# Could not dump table "badges" because of following StandardError
+#   Unknown type 'badge_award_type' for column 'award_type'
 
   create_table "categories", force: :cascade do |t|
     t.string "title", null: false

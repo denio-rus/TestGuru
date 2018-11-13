@@ -44,6 +44,8 @@ ru:
     result:
       header: "Тест \"%{title}\" завершён!"
       result_message: "Тест %{result}. Ваш результат: %{percent}% правильных ответов." 
+    update:
+      got_badge: "Поздравляем! Вы получили награду!"
     gist: 
       success: "<a href=\"%{url}\" target='_blank'>Gist успешно сохранен</a>"
       failure: "Во время сохранения gist произошла ошибка!"

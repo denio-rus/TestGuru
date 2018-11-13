@@ -8,11 +8,15 @@ class AchievementService
   def check_all
     return unless @test_passage.success?
 
-    Badge.select(:id, :award_type, :condition).each do |badge| 
-      @current_user.badges << badge if send("check_#{badge.award_type}?", badge.condition) 
+    Badge.all.select do |badge| 
+      if badge.award_type == 'first_attempt'
+        send("check_#{badge.award_type}?")
+      else
+        send("check_#{badge.award_type}?", badge.condition)
+      end
     end
   end
-
+  
   private
 
   def check_all_in_category?(condition)
@@ -32,7 +36,7 @@ class AchievementService
   end
 
   def check_first_attempt?
-    @test_passage.test_id == @current_user.test_passages.where(test: @test_passage.test_id).ids.sort.first
+    @test_passage.id == @current_user.test_passages.where(test: @test_passage.test_id).ids.sort.first
   end
 
   def check_successful_tests?(condition)

@@ -75,6 +75,8 @@ en:
     result:
       header: "The %{title} Test was Completed!"
       result_message: "The Test is %{result}. You got %{percent}% of correct answers." 
+    update:
+      got_badge: "Congratulations! You got a new badge!"
     gist:
       success: "<a href=\"%{url}\" target='_blank'>Gist was created successfully!</a>"
       failure: "An error occured while saving gist!"
