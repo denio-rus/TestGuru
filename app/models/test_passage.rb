@@ -57,6 +57,6 @@ class TestPassage < ApplicationRecord
   end
 
   def set_successful
-    self.successful = true if success?
+    self.successful = success?
   end
 end

@@ -12,7 +12,7 @@ class TestPassagesController < ApplicationController
     @test_passage.accept!(params[:answer_ids])
     
     if @test_passage.completed?
-      check_award if @test_passage.success?
+      check_award
       TestsMailer.completed_test(@test_passage).deliver_now
       redirect_to result_test_passage_path(@test_passage)
     else
@@ -21,9 +21,8 @@ class TestPassagesController < ApplicationController
   end
   
   def check_award
-    award = AchievementService.new(@test_passage, current_user)
-    award.check_all
-    flash.notice = 'You got a new badge!' if award.success?
+    award = AchievementService.new(@test_passage, current_user).check_all
+    flash.notice = 'You got a new badge!' if award.present?
   end
 
   def gist

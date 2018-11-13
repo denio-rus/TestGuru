@@ -1,42 +1,46 @@
 class AchievementService
-  BADGE_TYPES = %i[all_in_category all_in_level first_attempt successful_tests].freeze
-  
+
   def initialize(test_passage, current_user)
     @test_passage = test_passage
     @current_user = current_user
-    @success = false
-  end
-
-  def success?
-    @success
   end
 
   def check_all
-    Badge.all.each do |badge| 
-      if send("check_#{badge.award_type}", badge.condition)
-        @current_user.achievements.create(badge_id: badge.id)
-        @success = true
-      end
+    return unless @test_passage.success?
+
+    Badge.select(:id, :award_type, :condition).each do |badge| 
+      @current_user.badges << badge if send("check_#{badge.award_type}?", badge.condition) 
     end
   end
 
-  def check_all_in_category(condition)
-    Category.find_by(title: condition).tests.ids.sort == @test_passage.category.test_passages.all_successful.where(user: @current_user).pluck(:test_id).uniq.sort
+  private
+
+  def check_all_in_category?(condition)
+    return unless @test_passage.category.title == condition
+
+    all_tests_in_category = Category.find_by(title: condition).tests.ids.sort
+    test_passed_in_category = select_successful_passages.joins(:category).where('categories.title = ?', condition).pluck(:test_id)
+    all_tests_in_category == test_passed_in_category.uniq.sort
   end
 
-  def check_all_in_level(condition)
+  def check_all_in_level?(condition)
     level = @test_passage.test.level
-    list = []
-    @current_user.test_passages.all_successful.each { |test_passage| list << test_passage.test_id if test_passage.test.level == level}
-    Test.where(level: condition.to_i).ids.sort == list.uniq.sort
+    return unless level == condition.to_i
+   
+    successful_tests_in_level = select_successful_passages.joins(:test).where('tests.level = ?', level).pluck(:test_id)
+    Test.where(level: condition.to_i).ids.sort == successful_tests_in_level.uniq.sort
   end
 
-  def check_first_attempt(condition)
-    @test_passage.test_id == Test.find_by(title: condition).id && @test_passage.id == @current_user.test_passages.where(test: @test_passage.test_id).ids.sort.first
+  def check_first_attempt?
+    @test_passage.test_id == @current_user.test_passages.where(test: @test_passage.test_id).ids.sort.first
   end
 
-  def check_successful_tests(condition)
-    @current_user.test_passages.all_successful.count == condition.to_i
+  def check_successful_tests?(condition)
+    select_successful_passages.count == condition.to_i
+  end
+
+  def select_successful_passages
+    @current_user.test_passages.all_successful
   end
 end 
  
