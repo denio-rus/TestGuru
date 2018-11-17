@@ -2,8 +2,12 @@ class TestPassage < ApplicationRecord
   belongs_to :user
   belongs_to :test
   belongs_to :current_question, class_name: 'Question', optional: true
+  has_one :category, through: :test
 
+  scope :all_successful, -> { where(successful: true) }
+  
   before_validation :before_validation_set_next_question
+  before_save :set_successful
 
   def accept!(answer_ids)
     self.correct_questions += 1 if correct_answer?(answer_ids)
@@ -19,7 +23,7 @@ class TestPassage < ApplicationRecord
   end
 
   def success?
-    percent_of_correct_answers >= 85
+    completed? && percent_of_correct_answers >= 85
   end
 
   def number_of_questions
@@ -50,5 +54,9 @@ class TestPassage < ApplicationRecord
 
   def correct_answers
     current_question.answers.correct
+  end
+
+  def set_successful
+    self.successful = success?
   end
 end

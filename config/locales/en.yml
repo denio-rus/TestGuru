@@ -55,6 +55,7 @@ en:
     sign_up: "Sign up"
     link_admin_panel: "Admin Panel"
     link_user_mode: "Switch to User mode"
+    link_achievements_html: "<a href='%{url}'>Your Achievements</a>"
 
   feedback:
     new:
@@ -74,15 +75,43 @@ en:
     result:
       header: "The %{title} Test was Completed!"
       result_message: "The Test is %{result}. You got %{percent}% of correct answers." 
+    update:
+      got_badge: "Congratulations! You got a new badge!"
     gist:
       success: "<a href=\"%{url}\" target='_blank'>Gist was created successfully!</a>"
       failure: "An error occured while saving gist!"
 
+  achievements:
+    index:
+      header: "Your Achievements"
+      badge_title: "Title"
+      badge_image: "Award"
+      date: "Award was recieved at:"
+      link_badges: "All Posible Achievements"
+
+  badges:
+    index:
+      header: "All Awards"
+      badge_title: "Title"
+      badge_image: "Award"
+      desription: "Short Description"
 
   gist_params:
     description: "A question about %{test_title} from TestGuru"
      
   admin:
+    badges:
+      index:
+        link_new_badge: "Create New Badge"
+      show:
+        title_html: "<strong>Title:</strong>"
+        description_html: "<strong>Description:</strong>"
+        condition_html: "<strong>Condition:</strong>"
+        edit_badge: "Edit Badge"
+      edit:
+        header: "Edit Badge %{title}"
+      new:
+        header: "Create New Badge"
     tests:
       create:
         success: 'Test was successfully created.'
@@ -90,6 +119,7 @@ en:
         header: "Tricky Tests"
         link_new_test: "New test"
         link_gists_index: "Gists Index"
+        link_badges: "List Badges"
       new:
         header: "Create New Test"
       edit:
@@ -116,6 +146,9 @@ en:
       test:
         create: "Create Test"
         update: "Update Test"
+      badge:
+        create: "Create Badge"
+        update: "Update Badge"
       feedback:
         new: "Send"
     label:
@@ -125,4 +158,8 @@ en:
         category_id: "Category"
       question:
         body: "Вопрос:"
+      badge:
+        title: "Title"
+        description: "Description"
+        condition: "Condition"
 

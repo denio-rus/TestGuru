@@ -1,0 +1,40 @@
+<%= form_with model: [:admin, @badge], local: true do |form| %>
+  <%= render 'shared/errors', resource: @badge %>
+  <div class="form-group">
+    <p>
+      <%= form.label :title %><br>
+      <%= form.text_field :title, id: :test_title, placeholder: "Title", class: "form-control" %>
+    </p><br>
+    
+    <p>
+      <%= form.label :image %><br>
+      <%= form.text_field :image, id: :test_image, placeholder: "Url of image", class: "form-control" %>
+    </p><br>
+  
+    <p>
+      <%= form.label :description %><br>
+      <%= form.text_field :description, id: :badge_description, placeholder: "Short Description", class: "form-control" %>
+    </p><br>  
+
+    <p>
+      <%= form.label :award_type %><br>
+      <%= form.collection_select :award_type, Badge.award_types, :first, :first, id: :award_type, prompt: true %>
+    </p><br>
+    
+    <p>
+      <strong>Укажите уловие</strong>
+      <ol>
+        <li>Название категории</li>
+        <li>Значение уровня(цифра)</li>
+        <li>Ничего не указывать</li>
+        <li>Количество N</li>
+      </ol>
+      <%= form.label :condition %><br>
+      <%= form.text_field :condition, id: :badge_condition, placeholder: "Enter the condition", class: "form-control" %>
+    </p><br>
+
+    <p><%= form.submit %></p>
+  </div>
+<% end %>
+
+    
