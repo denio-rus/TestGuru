@@ -1,7 +1,6 @@
 class TestPassagesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_test_passage, only: %i[show update result gist]
-  #around_action :set_timer, only: :show, if: :timer?
 
   def show
     render plain: 'There are no questions in this test yet' unless @test_passage.current_question
@@ -34,17 +33,6 @@ class TestPassagesController < ApplicationController
   end
 
   private
-  
-  def set_timer
-    start_time = Time.now
-    yield
-    spent_time = Time.now - start_time
-    @test_passage.time_spent = spent_time
-  end
-
-  def timer?
-    @test_passage.timer?
-  end
 
   def set_test_passage
     @test_passage = TestPassage.find(params[:id])

@@ -36,24 +36,14 @@ class TestPassage < ApplicationRecord
     test.questions.where('id <= ?', current_question).count
   end
 
-  def in_time?
-    return false if Time.now - created_at >= time_limit
-
-    time_limit >= time_spent
-  end
-
-  def not_in_time? 
-    !in_time?
-  end
-
-  def rest_of_time
+  def rest_of_the_time
     return time_limit if time_spent.zero?
 
     time_limit - time_spent
   end
 
   def time_limit 
-    @time_limit ||= test.time_limit * 60
+    @time_limit ||= test.time_limit * 60 if timer?
   end
 
   def time_spent
@@ -90,5 +80,16 @@ class TestPassage < ApplicationRecord
 
   def set_successful
     self.successful = success?
+  end
+
+  def in_time?
+    return true unless timer?
+    return if Time.now - created_at >= time_limit
+
+    time_limit >= time_spent
+  end
+
+  def not_in_time? 
+    !in_time?
   end
 end
