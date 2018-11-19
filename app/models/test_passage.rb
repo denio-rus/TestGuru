@@ -1,4 +1,6 @@
 class TestPassage < ApplicationRecord
+  attr_writer :time_spent
+
   belongs_to :user
   belongs_to :test
   belongs_to :current_question, class_name: 'Question', optional: true
@@ -10,7 +12,7 @@ class TestPassage < ApplicationRecord
   before_save :set_successful
 
   def accept!(answer_ids)
-    self.correct_questions += 1 if correct_answer?(answer_ids)
+    self.correct_questions += 1 if correct_answer?(answer_ids) && in_time?
     save!
   end
 
@@ -34,6 +36,34 @@ class TestPassage < ApplicationRecord
     test.questions.where('id <= ?', current_question).count
   end
 
+  def in_time?
+    return false if Time.now - created_at >= time_limit
+
+    time_limit >= time_spent
+  end
+
+  def not_in_time? 
+    !in_time?
+  end
+
+  def rest_of_time
+    return time_limit if time_spent.zero?
+
+    time_limit - time_spent
+  end
+
+  def time_limit 
+    @time_limit ||= test.time_limit * 60
+  end
+
+  def time_spent
+    Time.now - created_at
+  end
+
+  def timer?
+    test.time_limit.present?
+  end
+
   private
 
   def before_validation_set_next_question
@@ -42,6 +72,8 @@ class TestPassage < ApplicationRecord
 
   def next_question 
     if current_question 
+      return if not_in_time?
+
       test.questions.order(:id).where('id > ?', current_question.id).first
     else
       test.questions.first if test.present?
