@@ -128,6 +128,7 @@ ru:
         title: "Название"
         level: "Уровень"
         category_id: "Категория"
+        time_limit: "Ограничение времени на тест"
       badge:
         title: "Название"
         description: "Описание"

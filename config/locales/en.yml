@@ -156,6 +156,7 @@ en:
         title: "Title"
         level: "Level"
         category_id: "Category"
+        time_limit: "Time limitation for testing"
       question:
         body: "Вопрос:"
       badge:
