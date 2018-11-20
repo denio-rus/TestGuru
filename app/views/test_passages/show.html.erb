@@ -4,7 +4,7 @@
 <% if @test_passage.timer? %>
   <div class='timer', data-rest-of-the-time='<%= (@test_passage.rest_of_the_time.to_i)%>' >
     <p>
-      <%= content_tag(:span ,'Контроль времени (с): ') %>
+      <%= content_tag(:span ,'Контроль времени: ') %>
       <%= content_tag(:strong, @test_passage.rest_of_the_time.to_i, id: "counter") %>
     </p>
   </div>
