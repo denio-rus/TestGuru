@@ -4,13 +4,13 @@ document.addEventListener('turbolinks:load', function() {
   function countdown () {
     var count = document.getElementById('counter')
     var limit = timer.dataset.restOfTheTime;
-    var link = document.getElementById('result-page-link').href
+    var form = document.getElementById('form_test_passage')
     setInterval(function() {
       if (limit >= 0) { 
         count.innerHTML = timeConverter(limit);
         limit--;
       } else {
-        document.location = link;
+        form.submit();
       };
     }, 1000);
     function timeConverter (seconds) {
