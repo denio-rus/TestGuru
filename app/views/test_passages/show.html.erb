@@ -1,17 +1,26 @@
 <h1><%= t('.header', title: @test_passage.test.title) %></h1>
 
 <p><%= t('.question_number', number: @test_passage.number_of_current_question, total: @test_passage.number_of_questions) %> <p>
+<% if @test_passage.timer? %>
+  <div class='timer', data-rest-of-the-time='<%= (@test_passage.rest_of_the_time.to_i)%>' >
+    <p>
+      <%= content_tag(:span ,'Контроль времени: ') %>
+      <%= content_tag(:strong, @test_passage.rest_of_the_time.to_i, id: "counter") %>
+    </p>
+  </div>
+<% end %>
 
 <div class='progress-bar'>
   <%= content_tag :div, '',class: 'progress', 
                   data: { percent: (@test_passage.number_of_current_question / @test_passage.number_of_questions.to_f * 100).to_s + "%" } %>
 </div>
 
+
 <p>
   <b><%= @test_passage.current_question.body %></b>
 </p>
 
-<%= form_with url: test_passage_path(@test_passage), local: true, method: :put do |form| %>
+<%= form_with url: test_passage_path(@test_passage), id: 'form_test_passage',local: true, method: :put do |form| %>
   <%= form.collection_check_boxes :answer_ids, @test_passage.current_question.answers, :id, :body, include_hidden: false do |b| %>
     <p>
       <%= b.check_box id: "answer_ids_#{b.object.id}" %>

@@ -10,7 +10,6 @@ class TestPassagesController < ApplicationController
 
   def update
     @test_passage.accept!(params[:answer_ids])
-
     if @test_passage.completed?
       grant_badges
       TestsMailer.completed_test(@test_passage).deliver_now
